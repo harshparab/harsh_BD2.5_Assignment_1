@@ -236,8 +236,8 @@ function sortBasedOnPopularity(product1, product2) {
 
 app.get('/products/sort/popularity', (req, res) => {
   let productsCopy = products.slice();
-  let result = products.sort(sortBasedOnPopularity);
-  res.json(result);
+  let result = productsCopy.sort(sortBasedOnPopularity);
+  res.json({products:result});
 });
 
 // Endpoint 2
@@ -247,8 +247,8 @@ function sortBasedOnPriceHighToLow(product1, product2) {
 
 app.get('/products/sort/price-high-to-low', (req, res) => {
   let productsCopy = products.slice();
-  let result = products.sort(sortBasedOnPriceHighToLow);
-  res.json(result);
+  let result = productsCopy.sort(sortBasedOnPriceHighToLow);
+  res.json({products:result});
 });
 
 // Endpoint 3
@@ -258,8 +258,8 @@ function sortBasedOnPriceLowToHigh(product1, product2) {
 
 app.get('/products/sort/price-low-to-high', (req, res) => {
   let productsCopy = products.slice();
-  let result = products.sort(sortBasedOnPriceLowToHigh);
-  res.json(result);
+  let result = productsCopy.sort(sortBasedOnPriceLowToHigh);
+  res.json({products:result});
 });
 
 // Endpoint 4
@@ -270,7 +270,7 @@ function filterByRam(product, ram) {
 app.get('/products/filter/ram', (req, res) => {
   let ram = parseInt(req.query.ram);
   let result = products.filter((product) => filterByRam(product, ram));
-  res.json(result);
+  res.json({products:result});
 });
 
 // Endpoint 5
@@ -281,7 +281,7 @@ function filterByRom(product, rom) {
 app.get('/products/filter/rom', (req, res) => {
   let rom = parseInt(req.query.rom);
   let result = products.filter((product) => filterByRom(product, rom));
-  res.json(result);
+  res.json({products:result});
 });
 
 // Endpoint 6
@@ -292,7 +292,7 @@ function filterByBrand(product, brand) {
 app.get('/products/filter/brand', (req, res) => {
   let brand = req.query.brand;
   let result = products.filter((product) => filterByBrand(product, brand));
-  res.json(result);
+  res.json({products:result});
 });
 
 // Endpoint 7
@@ -303,7 +303,7 @@ function filterByOs(product, os) {
 app.get('/products/filter/os', (req, res) => {
   let os = req.query.os;
   let result = products.filter((product) => filterByOs(product, os));
-  res.json(result);
+  res.json({products:result});
 });
 
 // Endpoint 8
@@ -314,12 +314,12 @@ function filterByPrice(product, price) {
 app.get('/products/filter/price', (req, res) => {
   let price = req.query.price;
   let result = products.filter((product) => filterByPrice(product, price));
-  res.json(result);
+  res.json({products:result});
 });
 
 // Endpoint 9
 app.get('/products', (req, res) => {
-  res.json(products);
+  res.json({products:products});
 });
 
 app.listen(port, () => {
